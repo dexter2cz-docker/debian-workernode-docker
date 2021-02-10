@@ -16,3 +16,5 @@ if ! cmp ${PACKAGES_FILE} ${PACKAGES_FILE}.new > /dev/null 2>&1; then
     git commit -m "Some packages changed `date`"
     git push origin master
 fi
+
+rm -f ${PACKAGES_FILE}.new
