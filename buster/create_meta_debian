@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CANNOT_INSTALL=($(grep afs packages_file))
+
+apt update -qqq
+
+#E: Unable to locate package libpbspro
+#E: Package 'libssl1.0.0' has no installation candidate
+
+CANNOT_INSTALL=(${CANNOT_INSTALL[*]} $(apt install -s `cat packages_file` 2>&1 | grep -Po "(E: Unable to locate package |E: Package ')\K[^&']+"))
+
+for i in ${CANNOT_INSTALL[*]}; do sed -i "s/^$i$//" packages_file; done
+
+apt install -yqqq `cat packages_file`
