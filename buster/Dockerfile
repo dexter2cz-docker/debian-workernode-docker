@@ -6,14 +6,6 @@ WORKDIR /tmp
 
 COPY . .
 
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN bash ./create_meta_debian \
-    && rm -r /var/lib/apt/lists/* \
-    && apt-get clean
-
-RUN mkdir /afs /packages /auto /storage /scratch /scratch.ssd /cvmfs
-
-RUN ln -sf /afs/ics.muni.cz/software /software
+RUN bash ./create_meta_debian
 
 CMD ["bash"]

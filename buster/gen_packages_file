@@ -8,7 +8,7 @@ PACKAGES_FILE=${WORKDIR}/packages_file
 mkdir -p $WORKDIR
 
 touch ${PACKAGES_FILE}
-dpkg -l | grep -Po "ii\s+\Klib[^\s:]+" > ${PACKAGES_FILE}.new
+dpkg -l | grep -Po "ii\s+\K[^\s:]+" > ${PACKAGES_FILE}.new
 
 if ! cmp ${PACKAGES_FILE} ${PACKAGES_FILE}.new > /dev/null 2>&1; then
     mv ${PACKAGES_FILE}.new ${PACKAGES_FILE}
