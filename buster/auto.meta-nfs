@@ -1,0 +1,34 @@
+brno1-cerit             -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno1-cerit.metacentrum.cz:/
+#brno2                  -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno2.metacentrum.cz:/
+brno3-cerit             -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno3-cerit.metacentrum.cz:/
+brno6                   -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr,vers=4.0 storage-brno6.metacentrum.cz:/
+brno9-ceitec            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno9-ceitec.metacentrum.cz:/
+brno10-ceitec-hsm       -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno10-ceitec-hsm.metacentrum.cz:/
+brno11-elixir           -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno11-elixir.metacentrum.cz:/
+brno12-cerit            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno12-cerit.metacentrum.cz:/
+brno14-ceitec           -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-brno14-ceitec.metacentrum.cz:/
+
+budejovice1             -fstype=nfs4,sec=krb5i,vers=4.0,proto=tcp,port=2049,intr storage-budejovice1.metacentrum.cz:/home
+
+liberec3-tul            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-liberec3-tul.metacentrum.cz:/
+
+plzen1                  -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-plzen1.metacentrum.cz:/
+plzen3-kky              -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr konos-pole2-kky.fav.zcu.cz:/data-kky
+plzen4-ntis             -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-plzen4.ntis.zcu.cz:/
+#praha1                 -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha1.metacentrum.cz:/home
+praha1                  -fstype=bind                                    :/storage/vestec1-elixir/home
+
+praha2-natur            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha2-natur.metacentrum.cz:/
+
+praha5-elixir           -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha5-elixir.metacentrum.cz:/
+praha6-fzu              -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha6-fzu.metacentrum.cz:/
+
+pruhonice1-ibot         -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-pruhonice1-ibot.metacentrum.cz:/
+
+ostrava1                -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-ostrava1.metacentrum.cz:/home
+
+vestec1-elixir          -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-vestec1-elixir.metacentrum.cz:/
+
+du-cesnet               -fstype=nfs4,sec=krb5i                          storage-du-cesnet.metacentrum.cz:/
+
+

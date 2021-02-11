@@ -18,3 +18,8 @@ if ! cmp ${PACKAGES_FILE} ${PACKAGES_FILE}.new > /dev/null 2>&1; then
 fi
 
 rm -f ${PACKAGES_FILE}.new
+
+cp /etc/krb5.conf .
+cp -ar /etc/auto.master.d .
+cp /etc/auto.meta-nfs .
+cp -ar /storage .

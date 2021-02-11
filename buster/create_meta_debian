@@ -1,11 +1,12 @@
 #!/bin/bash
 
-CANNOT_INSTALL=($(grep afs packages_file) apt-show-versions memtest86)
+CANNOT_INSTALL=(libpam-afs-session openafs-client openafs-krb5 openafs-modules-dkms apt-show-versions memtest86)
 export DEBIAN_FRONTEND=noninteractive
 
 apt update -qqq
 apt install curl gpg -yqqq
 curl https://repo.grid.cesnet.cz/key.asc | apt-key add -
+curl https://cvmrepo.web.cern.ch/cvmrepo/apt/cernvm.gpg | apt-key add -
 
 cat > /etc/apt/sources.list << EO_SRCLIST
 # Debian repository
@@ -18,7 +19,20 @@ deb-src http://ftp.zcu.cz/pub/linux/debian buster-updates main contrib non-free
 deb-src http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
 EO_SRCLIST
 
-cat > /etc/apt/preferences.d/meta_repo.pref << EO_PREF
+cat > /etc/apt/sources.list.d/meta_repo.list << EO_METAREPO
+#METACentrum repository incl. pilot section
+deb https://repo.metacentrum.cz/ all main pilot
+deb https://repo.metacentrum.cz/ buster main pilot
+
+deb-src https://repo.metacentrum.cz/ all main pilot
+deb-src https://repo.metacentrum.cz/ buster main pilot
+EO_METAREPO
+
+cat > /etc/apt/sources.list.d/cernvm.list << EO_CERNREPO
+deb http://cvmrepo.web.cern.ch/cvmrepo/apt buster-prod main
+EO_CERNREPO
+
+cat > /etc/apt/preferences.d/meta_repo.pref << EO_METAPREF
 Package: *
 Pin: release o=meta@cesnet.cz,n=buster,c=pilot
 Pin-Priority: 960
@@ -30,16 +44,7 @@ Pin-Priority: 950
 Package: *
 Pin: release o=meta@cesnet.cz,n=all
 Pin-Priority: 940
-EO_PREF
-
-cat > /etc/apt/sources.list.d/meta_repo.list << EO_REPO
-#METACentrum repository incl. pilot section
-deb https://repo.metacentrum.cz/ all main pilot
-deb https://repo.metacentrum.cz/ buster main pilot
-
-deb-src https://repo.metacentrum.cz/ all main pilot
-deb-src https://repo.metacentrum.cz/ buster main pilot
-EO_REPO
+EO_METAPREF
 
 apt update -qqq
 
@@ -52,11 +57,14 @@ for i in ${CANNOT_INSTALL[*]}; do sed -i "s/^$i$//" packages_file; done
 
 apt install -yqqq `cat packages_file`
 
-curl https://repo.grid.cesnet.cz/krb5.conf > /etc/krb5.conf
+cp krb5.conf /etc
+cp -r auto.master.d /etc
+cp auto.meta-nfs /etc
+cp -r storage /
 
 rm -r /var/lib/apt/lists/*
 apt-get clean
 
-mkdir -p /afs /packages /auto /storage /scratch /scratch.ssd /cvmfs
+mkdir -p /afs /packages /auto /scratch /scratch.ssd /cvmfs
 
 ln -sf /afs/ics.muni.cz/software /software
