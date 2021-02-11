@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Put this to /etc/cron.daily
+
+WORKDIR=/root/debian-workernode/buster
+PACKAGES_FILE=${WORKDIR}/packages_file
+
+mkdir -p ${WORKDIR}
+
+cd ${WORKDIR}
+
+touch ${PACKAGES_FILE}
+dpkg -l | grep -Po "ii\s+\K[^\s:]+" > ${PACKAGES_FILE}
+
+cp /etc/krb5.conf .
+cp -ar /etc/auto.master.d .
+cp /etc/auto.meta-nfs .
+cp -ar /storage .
+
+git update-index --refresh > /dev/null
+if ! git diff-index --quiet HEAD --; then
+    echo delej
+    #git commit -am "Some packages or files changed `date`"
+    #git push origin devel
+fi

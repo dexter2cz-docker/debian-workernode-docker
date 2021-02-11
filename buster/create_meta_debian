@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /tmp
+
 CANNOT_INSTALL=(libpam-afs-session openafs-client openafs-krb5 openafs-modules-dkms apt-show-versions memtest86)
 export DEBIAN_FRONTEND=noninteractive
 

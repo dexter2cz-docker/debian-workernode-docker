@@ -2,10 +2,8 @@ FROM debian:buster
 
 MAINTAINER Pavel Vondruska <vondruska@cesnet.cz>
 
-WORKDIR /tmp
+COPY . /tmp
 
-COPY . .
-
-RUN bash ./create_meta_debian
+RUN bash /tmp/create_meta_debian
 
 CMD ["bash"]
