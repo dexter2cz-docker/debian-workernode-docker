@@ -16,6 +16,11 @@ cp /etc/krb5.conf .
 cp -ar /etc/auto.master.d .
 cp /etc/auto.meta-nfs .
 cp -ar /storage .
+cp -ar /etc/apt .
+
+m-a a-b openafs > /dev/null 2>&1
+
+cp /usr/src/openafs-modules-`uname -r`_1.8.6-1+zs2+`uname -v | grep -Po "Debian \K[^ ]+"`_amd64.deb .
 
 git update-index --refresh > /dev/null
 if ! git diff-index --quiet HEAD --; then

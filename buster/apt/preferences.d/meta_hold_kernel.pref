@@ -1,0 +1,6 @@
+# Managed by Puppet
+## Priorita nad 1000 znamena, ze se pri apt upgrade bude klidne i downgradovat 
+
+Package: linux-image-4.19.0-12-amd64-unsigned linux-compiler-gcc-8-x86 linux-headers-4.19.0-12-amd64 linux-headers-4.19.0-12-common linux-kbuild-4.19 linux-libc-dev
+Pin: release o=meta@cesnet.cz,n=buster
+Pin-Priority: 1001

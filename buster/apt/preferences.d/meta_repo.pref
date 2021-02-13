@@ -1,0 +1,11 @@
+Package: *
+Pin: release o=meta@cesnet.cz,n=buster,c=pilot
+Pin-Priority: 960
+
+Package: *
+Pin: release o=meta@cesnet.cz,n=buster
+Pin-Priority: 950
+
+Package: *
+Pin: release o=meta@cesnet.cz,n=all
+Pin-Priority: 940

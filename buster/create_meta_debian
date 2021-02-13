@@ -6,49 +6,11 @@ CANNOT_INSTALL=(libpam-afs-session openafs-client openafs-krb5 openafs-modules-d
 export DEBIAN_FRONTEND=noninteractive
 
 apt update -qqq
-apt install curl gpg -yqqq
-curl https://repo.grid.cesnet.cz/key.asc | apt-key add -
-curl https://cvmrepo.web.cern.ch/cvmrepo/apt/cernvm.gpg | apt-key add -
+apt install ca-certificates apt-listchanges -yqqq
 
-cat > /etc/apt/sources.list << EO_SRCLIST
-# Debian repository
-deb http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
-deb http://ftp.zcu.cz/pub/linux/debian buster-updates main contrib non-free
-deb http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
+cp -r apt /etc
 
-deb-src http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
-deb-src http://ftp.zcu.cz/pub/linux/debian buster-updates main contrib non-free
-deb-src http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
-EO_SRCLIST
-
-cat > /etc/apt/sources.list.d/meta_repo.list << EO_METAREPO
-#METACentrum repository incl. pilot section
-deb https://repo.metacentrum.cz/ all main pilot
-deb https://repo.metacentrum.cz/ buster main pilot
-
-deb-src https://repo.metacentrum.cz/ all main pilot
-deb-src https://repo.metacentrum.cz/ buster main pilot
-EO_METAREPO
-
-cat > /etc/apt/sources.list.d/cernvm.list << EO_CERNREPO
-deb http://cvmrepo.web.cern.ch/cvmrepo/apt buster-prod main
-EO_CERNREPO
-
-cat > /etc/apt/preferences.d/meta_repo.pref << EO_METAPREF
-Package: *
-Pin: release o=meta@cesnet.cz,n=buster,c=pilot
-Pin-Priority: 960
-
-Package: *
-Pin: release o=meta@cesnet.cz,n=buster
-Pin-Priority: 950
-
-Package: *
-Pin: release o=meta@cesnet.cz,n=all
-Pin-Priority: 940
-EO_METAPREF
-
-apt update -qqq
+apt update
 
 #E: Unable to locate package libpbspro
 #E: Package 'libssl1.0.0' has no installation candidate
@@ -57,7 +19,7 @@ CANNOT_INSTALL=(${CANNOT_INSTALL[*]} $(apt install -s `cat packages_file` 2>&1 |
 
 for i in ${CANNOT_INSTALL[*]}; do sed -i "s/^$i$//" packages_file; done
 
-apt install -yqqq `cat packages_file`
+apt install -y `cat packages_file`
 
 cp krb5.conf /etc
 cp -r auto.master.d /etc
@@ -65,6 +27,8 @@ cp auto.meta-nfs /etc
 cp -r storage /
 
 rm -r /var/lib/apt/lists/*
+rm /etc/ssh/ssh_host_*
+
 apt-get clean
 
 mkdir -p /afs /packages /auto /scratch /scratch.ssd /cvmfs

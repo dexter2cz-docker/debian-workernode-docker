@@ -1245,6 +1245,7 @@ open-vm-tools
 openafs-client
 openafs-krb5
 openafs-modules-dkms
+openafs-modules-source
 openbsd-inetd
 openmpi-bin
 openmpi-common

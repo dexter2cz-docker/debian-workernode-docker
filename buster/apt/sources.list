@@ -1,0 +1,14 @@
+#Managed by Puppet
+#Only basic Debian repository
+#Other repositories are specified one per file in folder /etc/apt/sources.list.d
+
+# puppet notify_update: 28
+
+# Debian repository
+deb http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
+deb http://ftp.zcu.cz/pub/linux/debian buster-updates main contrib non-free
+deb http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
+
+deb-src http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
+deb-src http://ftp.zcu.cz/pub/linux/debian buster-updates main contrib non-free
+deb-src http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free

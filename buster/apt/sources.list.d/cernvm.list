@@ -1,0 +1,3 @@
+# Managed by puppet
+
+deb http://cvmrepo.web.cern.ch/cvmrepo/apt buster-prod main
