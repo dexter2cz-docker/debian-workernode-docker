@@ -2,7 +2,7 @@
 
 cd /tmp
 
-CANNOT_INSTALL=(libpam-afs-session openafs-client openafs-krb5 openafs-modules-dkms apt-show-versions memtest86)
+CANNOT_INSTALL=(openafs-modules-dkms apt-show-versions memtest86)
 export DEBIAN_FRONTEND=noninteractive
 
 apt update -qqq
@@ -19,12 +19,13 @@ CANNOT_INSTALL=(${CANNOT_INSTALL[*]} $(apt install -s `cat packages_file` 2>&1 |
 
 for i in ${CANNOT_INSTALL[*]}; do sed -i "s/^$i$//" packages_file; done
 
-apt install -y `cat packages_file`
+apt install -y `cat packages_file` ./openafs-modules-*
 
 cp krb5.conf /etc
 cp -r auto.master.d /etc
 cp auto.meta-nfs /etc
 cp -r storage /
+cp -r openafs /etc
 
 rm -r /var/lib/apt/lists/*
 rm /etc/ssh/ssh_host_*
