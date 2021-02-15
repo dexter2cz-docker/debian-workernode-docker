@@ -6,6 +6,11 @@ CANNOT_INSTALL=(openafs-modules-dkms apt-show-versions memtest86)
 export DEBIAN_FRONTEND=noninteractive
 
 apt update -qqq
+
+apt purge linux-image* linux-headers* -yqqq
+
+apt upgrade -yqqq
+
 apt install ca-certificates apt-listchanges -yqqq
 
 cp -r apt /etc
