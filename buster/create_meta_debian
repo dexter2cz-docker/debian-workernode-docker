@@ -9,7 +9,7 @@ apt update -qqq
 
 apt purge linux-image* linux-headers* -yqqq
 
-apt upgrade -yqqq
+apt upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -yqqq
 
 apt install ca-certificates apt-listchanges -yqqq
 
