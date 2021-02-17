@@ -27,6 +27,7 @@ for i in ${CANNOT_INSTALL[*]}; do sed -i "s/^$i$//" packages_file; done
 apt install -y `cat packages_file` ./openafs-modules-*
 
 cp krb5.conf /etc
+cp /etc/idmapd.conf /etc
 cp -r auto.master.d /etc
 cp auto.meta-nfs /etc
 cp -r storage /
