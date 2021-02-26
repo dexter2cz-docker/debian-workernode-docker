@@ -15,7 +15,6 @@ liberec3-tul            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-
 plzen1                  -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-plzen1.metacentrum.cz:/
 plzen3-kky              -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr konos-pole2-kky.fav.zcu.cz:/data-kky
 plzen4-ntis             -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-plzen4.ntis.zcu.cz:/
-#praha1                 -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha1.metacentrum.cz:/home
 praha1                  -fstype=bind                                    :/storage/vestec1-elixir/home
 
 praha2-natur            -fstype=nfs4,sec=krb5i,proto=tcp,port=2049,intr storage-praha2-natur.metacentrum.cz:/

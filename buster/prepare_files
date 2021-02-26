@@ -12,6 +12,8 @@ cd ${WORKDIR}
 touch ${PACKAGES_FILE}
 dpkg -l | grep -Po "ii\s+\K[^\s:]+" > ${PACKAGES_FILE}
 
+rm -rf auto.master.d storage apt openafs
+
 cp /etc/krb5.conf .
 cp /etc/idmapd.conf .
 cp -ar /etc/auto.master.d .
