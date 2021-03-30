@@ -1416,7 +1416,6 @@ sgml-base
 shared-mime-info
 sharutils
 singularity-container
-smartmontools
 spectre-meltdown-checker
 sqlite3
 squashfs-tools

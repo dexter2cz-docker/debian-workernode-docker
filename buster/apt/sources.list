@@ -2,7 +2,7 @@
 #Only basic Debian repository
 #Other repositories are specified one per file in folder /etc/apt/sources.list.d
 
-# puppet notify_update: 32
+# puppet notify_update: 33
 
 # Debian repository
 deb http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
