@@ -1,6 +1,6 @@
 #!/bin/bash 
   
-# openstack server create --flavor standard.medium --security-group open --image debian-10-x86_64 --network auto_allocated_network --key-name dexter --config-drive true --user-data openstack_run.sh metadebian
+# openstack server create --flavor standard.medium --security-group open --image debian-10.9.0-x86_64-2021-03 --network auto_allocated_network --key-name dexter --config-drive true --user-data openstack_run.sh metadebian
 
 if [ ! -e /METADEBIAN ]; then
 
@@ -15,7 +15,7 @@ userdel -r -f debian
 apt update -qqq
 apt install -yqqq git
 
-git clone https://github.com/dexter2cz-docker/debian-workernode-docker -b devel
+git clone https://github.com/dexter2cz-docker/debian-workernode-docker
 cp -arv debian-workernode-docker/buster/* /tmp
 
 bash -x /tmp/create_meta_debian
