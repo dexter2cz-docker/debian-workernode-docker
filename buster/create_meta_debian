@@ -33,6 +33,9 @@ cp auto.meta-nfs /etc
 cp -r storage /
 cp -r openafs /etc
 
+sed "s/OPTIONS=AUTOMATIC/OPTIONS=\"-rxmaxmtu 1380\"/" /etc/openafs/afs.conf -i
+echo 'install nfs /usr/sbin/modprobe --ignore-install nfs nfs4_unique_id=$(/usr/bin/cat /nfsid 2>/dev/null || /usr/bin/cat /proc/sys/kernel/random/uuid | /usr/bin/tee /nfsid)' > /etc/modprobe.d/nfs.conf
+
 rm -r /var/lib/apt/lists/*
 rm /etc/ssh/ssh_host_*
 
