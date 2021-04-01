@@ -20,7 +20,7 @@ cp -arv debian-workernode-docker/buster/* /tmp
 
 bash -x /tmp/create_meta_debian
 
-dpkg-reconfigure openssh-server
+#dpkg-reconfigure openssh-server
 
 adduser --system --shell /bin/bash --group debian
 usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev debian
@@ -29,5 +29,5 @@ touch /METADEBIAN
 
 cloud-init clean
 
-reboot
+poweroff
 fi
