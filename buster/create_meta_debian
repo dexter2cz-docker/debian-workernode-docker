@@ -29,12 +29,15 @@ apt install -y `cat packages_file` ./openafs-modules-*
 cp krb5.conf /etc
 cp /etc/idmapd.conf /etc
 cp -r auto.master.d /etc
-cp auto.meta-nfs /etc
+#cp auto.meta-nfs /etc
 cp -r storage /
 cp -r openafs /etc
 
 sed "s/OPTIONS=AUTOMATIC/OPTIONS=\"-rxmaxmtu 1380\"/" /etc/openafs/afs.conf -i
 echo 'install nfs /usr/sbin/modprobe --ignore-install nfs nfs4_unique_id=$(/usr/bin/cat /etc/nfsid 2>/dev/null || /usr/bin/cat /proc/sys/kernel/random/uuid | /usr/bin/tee /etc/nfsid)' > /etc/modprobe.d/nfs.conf
+
+while read a b c; do if [[ "$b" ]] && [[ ! "$b" =~ vers ]]; then echo "$a $b,vers=4.0 $c"; else echo "$a $b $c"; fi; done < /tmp/auto.meta-nfs\
+> /etc/auto.meta-nfs
 
 rm -r /var/lib/apt/lists/*
 rm /etc/ssh/ssh_host_*
