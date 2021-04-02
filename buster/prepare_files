@@ -29,6 +29,7 @@ cp /usr/src/openafs-modules-`uname -r`_1.8.6-1+zs2+`uname -v | grep -Po "Debian 
 git update-index --refresh > /dev/null
 if ! git diff-index --quiet HEAD --; then
     echo delej
+    #git add .
     #git commit -am "Some packages or files changed `date`"
     #git push origin devel
 fi
