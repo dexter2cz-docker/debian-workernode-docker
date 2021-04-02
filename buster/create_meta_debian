@@ -39,6 +39,12 @@ echo 'install nfs /usr/sbin/modprobe --ignore-install nfs nfs4_unique_id=$(/usr/
 while read a b c; do if [[ "$b" ]] && [[ ! "$b" =~ vers ]]; then echo "$a $b,vers=4.0 $c"; else echo "$a $b $c"; fi; done < /tmp/auto.meta-nfs\
 > /etc/auto.meta-nfs
 
+echo 'RPCGSSDARGS=-n' >> /etc/default/nfs-common
+mkdir -p /etc/systemd/system/rpc-gssd.service.d/
+echo '[Unit]
+ConditionPathExists=
+' > /etc/systemd/system/rpc-gssd.service.d/override.conf
+
 rm -r /var/lib/apt/lists/*
 rm /etc/ssh/ssh_host_*
 
