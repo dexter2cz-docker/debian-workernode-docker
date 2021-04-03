@@ -21,6 +21,7 @@ cp /etc/auto.meta-nfs .
 cp -ar /storage .
 cp -ar /etc/apt .
 cp -ar /etc/openafs .
+cp -ar /etc/cvmfs .
 
 m-a a-b openafs > /dev/null 2>&1
 

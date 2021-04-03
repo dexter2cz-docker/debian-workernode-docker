@@ -1,0 +1,4 @@
+# Managed by puppet
+CVMFS_DEFAULT_DOMAIN=metacentrum.cz
+CVMFS_REPOSITORIES="software.metacentrum.cz singularity.metacentrum.cz"
+CVMFS_HTTP_PROXY=DIRECT
