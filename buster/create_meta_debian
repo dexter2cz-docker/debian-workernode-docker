@@ -33,6 +33,10 @@ cp -r auto.master.d /etc
 cp -r storage /
 cp -r openafs /etc
 cp -r cvmfs /etc
+cp -r csh /etc
+cp -r profile.d /etc
+cp singularity.conf /etc/singularity/singularity.conf
+
 
 sed "s/OPTIONS=AUTOMATIC/OPTIONS=\"-rxmaxmtu 1380\"/" /etc/openafs/afs.conf -i
 echo 'install nfs /usr/sbin/modprobe --ignore-install nfs nfs4_unique_id=$(/usr/bin/cat /etc/nfsid 2>/dev/null || /usr/bin/cat /proc/sys/kernel/random/uuid | /usr/bin/tee /etc/nfsid)' > /etc/modprobe.d/nfs.conf

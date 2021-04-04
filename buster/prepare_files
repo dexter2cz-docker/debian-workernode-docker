@@ -22,6 +22,10 @@ cp -ar /storage .
 cp -ar /etc/apt .
 cp -ar /etc/openafs .
 cp -ar /etc/cvmfs .
+cp -ar /etc/csh .
+cp -ar /etc/profile.d .
+cp /etc/singularity/singularity.conf .
+
 
 m-a a-b openafs > /dev/null 2>&1
 
