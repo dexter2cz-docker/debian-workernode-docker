@@ -35,6 +35,7 @@ cp -r openafs /etc
 cp -r cvmfs /etc
 cp -r csh /etc
 cp -r profile.d /etc
+cp -r packages /
 cp singularity.conf /etc/singularity/singularity.conf
 
 
@@ -55,6 +56,6 @@ rm /etc/ssh/ssh_host_*
 
 apt-get clean
 
-mkdir -p /afs /packages /auto /scratch /scratch.ssd /cvmfs
+mkdir -p /afs /auto /scratch /scratch.ssd /cvmfs
 
 ln -sf /afs/ics.muni.cz/software /software

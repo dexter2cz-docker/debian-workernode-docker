@@ -24,6 +24,7 @@ cp -ar /etc/openafs .
 cp -ar /etc/cvmfs .
 cp -ar /etc/csh .
 cp -ar /etc/profile.d .
+cp -ar /packages .
 cp /etc/singularity/singularity.conf .
 
 
